@@ -27,13 +27,6 @@ const Header = () => {
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground py-2">
-        <div className="container mx-auto px-4 text-center text-sm">
-          📚 Free delivery on orders over KSH 2,000 | 🇰🇪 Proudly Kenyan
-        </div>
-      </div>
-
       {/* Main header */}
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -97,28 +90,34 @@ const Header = () => {
           {/* Action buttons */}
           <div className="flex items-center space-x-3">
             {/* Wishlist */}
-            <Button variant="ghost" size="icon" className="relative">
-              <Heart className="h-5 w-5" />
-              {wishlistItems > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-accent">
-                  {wishlistItems}
-                </Badge>
-              )}
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <a href="/wishlist">
+                <Heart className="h-5 w-5" />
+                {wishlistItems > 0 && (
+                  <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-accent">
+                    {wishlistItems}
+                  </Badge>
+                )}
+              </a>
             </Button>
 
             {/* Cart */}
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              {cartItems > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-primary">
-                  {cartItems}
-                </Badge>
-              )}
+            <Button variant="ghost" size="icon" className="relative" asChild>
+              <a href="/cart">
+                <ShoppingCart className="h-5 w-5" />
+                {cartItems > 0 && (
+                  <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-primary">
+                    {cartItems}
+                  </Badge>
+                )}
+              </a>
             </Button>
 
             {/* User account */}
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
+            <Button variant="ghost" size="icon" asChild>
+              <a href="/account">
+                <User className="h-5 w-5" />
+              </a>
             </Button>
 
             {/* Mobile menu */}
