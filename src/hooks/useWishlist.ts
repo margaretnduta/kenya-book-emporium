@@ -31,7 +31,7 @@ export const useWishlist = () => {
 
     try {
       const { data, error } = await supabase
-        .from('wishlist_items')
+        .from('wishlist_items' as any)
         .select(`
           id,
           book_id,
@@ -49,7 +49,7 @@ export const useWishlist = () => {
         .eq('user_id', user.id);
 
       if (error) throw error;
-      setWishlistItems(data || []);
+      setWishlistItems((data as any) || []);
     } catch (error) {
       console.error('Error fetching wishlist items:', error);
     }
@@ -64,7 +64,7 @@ export const useWishlist = () => {
     setLoading(true);
     try {
       const { error } = await supabase
-        .from('wishlist_items')
+        .from('wishlist_items' as any)
         .insert([{
           user_id: user.id,
           book_id: bookId
@@ -86,7 +86,7 @@ export const useWishlist = () => {
 
     try {
       const { error } = await supabase
-        .from('wishlist_items')
+        .from('wishlist_items' as any)
         .delete()
         .eq('user_id', user.id)
         .eq('book_id', bookId);
